@@ -3,11 +3,19 @@ import { getBlogs } from '../service/getBlogs';
 
 const Blogspage = async() => {
 
-    const blogs = await getBlogs()
+    const blogs = await getBlogs();
 
     return (
         <div>
-            Blog page
+
+            {
+                blogs.map((blog) => (
+                    <div key={blog.id}>
+                        <h2>{blog.title} </h2>
+                        <p>{blog.body}</p>
+                    </div>
+                ))
+            }
         </div>
     );
 };
