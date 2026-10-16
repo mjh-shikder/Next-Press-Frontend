@@ -1,7 +1,10 @@
 import React from 'react';
 import { getBlogs } from '../service/getBlogs';
+import { cacheLife } from 'next/cache';
 
-const Blogspage = async() => {
+const Blogspage = async () => {
+     'use cache'
+    cacheLife('hours')
 
     const blogs = await getBlogs();
 
