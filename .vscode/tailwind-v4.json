@@ -1,0 +1,13 @@
+{
+  "version": 1.1,
+  "atDirectives": [
+    { "name": "@import", "description": "Import CSS or Tailwind layers" },
+    { "name": "@theme", "description": "Define Tailwind theme variables" },
+    { "name": "@custom-variant", "description": "Define a custom Tailwind variant" },
+    { "name": "@apply", "description": "Apply Tailwind utilities within CSS" },
+    { "name": "@utility", "description": "Define a custom Tailwind utility" },
+    { "name": "@layer", "description": "Group CSS into a Tailwind layer" },
+    { "name": "@tailwind", "description": "Inject Tailwind styles" },
+    { "name": "@source", "description": "Specify source content for Tailwind" }
+  ]
+}
