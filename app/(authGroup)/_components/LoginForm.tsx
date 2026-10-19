@@ -3,11 +3,29 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import React from "react";
+import React, { useActionState, useEffect } from "react";
+import { loginAction } from "../_actions/authAction";
+import { toast } from "sonner";
 
 const LoginForm = () => {
+
+      const [state, action, pending] = useActionState(loginAction, false)
+
+  useEffect(() => {
+    if (!state) return;
+
+    if (state.success) { 
+      toast.success( state.message || "Login Successful")
+    }
+
+    if (!state.success) { 
+      toast.error(state.message || "Login Failed")
+    }
+
+   },[state])
+
   return (
-    <form className="space-y-4 ">
+    <form action={action} className="space-y-4 ">
       <Card className="p-5 space-y-4">
         <Input
           name="email"
@@ -21,7 +39,9 @@ const LoginForm = () => {
           placeholder="Password"
           required
         />
-        <Button type="submit">Login</Button>
+        <Button type="submit">
+          { pending ? "Submitting..." : "Login"}
+        </Button>
       </Card>
     </form>
   );
