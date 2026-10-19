@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const DashboardLayout = ({children }: {children: React.ReactNode} ) => {
-    return (
-        <>
-            { children}
-        </>
-    );
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  return <>{children}</>;
 };
 
 export default DashboardLayout;
