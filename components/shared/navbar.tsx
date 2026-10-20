@@ -23,10 +23,35 @@ const navLinks = [
 ];
 
 export type NavbarProps = {
-  user: { success?: boolean } | null;
+  user: {
+    success: boolean;
+    statusCode: number;
+    message: string;
+    data: {
+      profile: {
+        id: string;
+        name: string;
+        email: string;
+        activeStatus: "ACTIVE" | "BLOCKED";
+        role: "USER" | "ADMIN" | "AUTHOR"; 
+        createdAT: string; 
+        updatedAt: string; 
+        profile: {
+          id: string;
+          profilePhoto: string;
+          bio: string;
+          userId: string;
+          createdAt: string;
+          updatedAt: string;
+        };
+      };
+    };
+  };
 };
 
 const Navbar = ({ user }: NavbarProps) => {
+
+
   return (
     <header className="border-b bg-background">
       <div className="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 lg:px-8">
@@ -57,7 +82,7 @@ const Navbar = ({ user }: NavbarProps) => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  variant="ghost"
+                  variant="default"
                   size="icon"
                   aria-label="Open profile menu"
                   className="rounded-full"
@@ -66,7 +91,9 @@ const Navbar = ({ user }: NavbarProps) => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-52">
-                <DropdownMenuLabel>my account</DropdownMenuLabel>
+               
+                <DropdownMenuLabel className="mb-0 pb-0"> <p className="font-bold text-lg">{user.data.profile.name}</p></DropdownMenuLabel>
+                <DropdownMenuLabel className="mt-0 pt-0 ">{user.data.profile.email}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link href="/dashboard">

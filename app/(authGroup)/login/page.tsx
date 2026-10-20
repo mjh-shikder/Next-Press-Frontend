@@ -1,4 +1,6 @@
+import Link from "next/link";
 import LoginForm from "../_components/LoginForm";
+import { Button } from "@/components/ui/button";
 
 export default function LoginPage() {
   return (
@@ -13,6 +15,12 @@ export default function LoginPage() {
           </div>
           {/* Form */}
           <LoginForm></LoginForm>
+          <p className="text-center text-sm text-muted-foreground">
+            Don&apos;t have an account?{" "}
+            <Button asChild variant="link" className="h-auto p-0">
+              <Link href="/register">Sign up</Link>
+            </Button>
+          </p>
         </div>
       </div>
     </>
