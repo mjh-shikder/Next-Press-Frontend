@@ -20,6 +20,7 @@ import {
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "News", href: "/news" },
+  { label: "Premium", href: "/premium" },
 ];
 
 export type NavbarProps = {
